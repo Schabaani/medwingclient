@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import GridView from 'react-native-super-grid';
+import {addressToPoint} from './src/utilities/geocoder';
 
 export default class App extends Component {
+
     render() {
+        addressToPoint('Checkpoint Charlie');
         // Taken from https://flatuicolors.com/
         const items = [
             {name: 'TURQUOISE', code: '#1abc9c'}, {name: 'EMERALD', code: '#2ecc71'},
