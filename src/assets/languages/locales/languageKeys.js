@@ -1,4 +1,4 @@
-export default {
+export const LanguageKeys = {
     AddMap: 'AddMap',
     Edit: 'Edit',
     Delete: 'Delete',

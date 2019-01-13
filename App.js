@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ImageBackground} from 'react-native';
 import GridView from 'react-native-super-grid';
 import {addressToPoint} from './src/utilities/geocoder';
 
@@ -20,6 +20,7 @@ export default class App extends Component {
             {name: 'PUMPKIN', code: '#d35400'}, {name: 'POMEGRANATE', code: '#c0392b'},
             {name: 'SILVER', code: '#bdc3c7'},
         ];
+
 
         return (
             <GridView
