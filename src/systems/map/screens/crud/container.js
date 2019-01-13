@@ -43,11 +43,3 @@ const mapDispatchToProps = (dispatch) => {
 // const addedToast = ShowToastHOC(AutoServiceGrade);
 export default connect(mapStateToProps, mapDispatchToProps)(CRUD);
 
-
-export const AutoServiceGradeIdentifier = {
-    CHANGE_ECONOMY_PLAN: 'CHANGE_ECONOMY_PLAN',
-    CHANGE_SERVICE_GRADE: 'CHANGE_SERVICE_GRADE',
-    CANCEL: 'CANCEL',
-    SELECT_SERVICES: 'SELECT_SERVICES',
-    CHANGE_CATEGORY: 'CHANGE_CATEGORY',
-};

@@ -42,6 +42,7 @@ export function saveJobRequest(jobRequest) {
         }
     }
 }
+
 export const SAVE_PAY_ITEM = 'SAVE_PAY_ITEM';
 
 export function savePayItem(payItem) {
@@ -52,6 +53,7 @@ export function savePayItem(payItem) {
         }
     }
 }
+
 export const SAVE_SEARCH_RESULT = 'SAVE_SEARCH_RESULT';
 
 export function saveSearchResult(searchResult) {
