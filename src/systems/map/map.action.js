@@ -32,13 +32,13 @@ export function changeCarProblems(carProblems) {
     }
 }
 
-export const SAVE_JOB_REQUEST = 'SAVE_JOB_REQUEST';
+export const DELETE_POINT = 'DELETE_POINT';
 
-export function saveJobRequest(jobRequest) {
+export function deletePointDispatcher(uuid) {
     return {
-        type: SAVE_JOB_REQUEST,
+        type: DELETE_POINT,
         payload: {
-            jobRequest,
+            uuid,
         }
     }
 }

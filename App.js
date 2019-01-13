@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, ImageBackground} from 'react-native';
-import GridView from 'react-native-super-grid';
+import {View} from 'react-native';
 import {addressToPoint} from './src/utilities/geocoder';
+import {Provider} from 'react-redux';
+import CRUD from "./src/systems/map/screens/crud/container";
+import configureStore from './src/store/';
+import {PersistGate} from "redux-persist/lib/integration/react";
+
+const {persistor, store} = configureStore();
+// const RouterWithRedux = connect()(Router);
 
 export default class App extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         addressToPoint('Checkpoint Charlie');
@@ -23,40 +33,19 @@ export default class App extends Component {
 
 
         return (
-            <GridView
-                itemDimension={130}
-                items={items}
-                style={styles.gridView}
-                renderItem={item => (
-                    <View style={[styles.itemContainer, {backgroundColor: item.code}]}>
-                        <Text style={styles.itemName}>{item.name}</Text>
-                        <Text style={styles.itemCode}>{item.code}</Text>
-                    </View>
-                )}
-            />
-        );
+
+            <Provider store={store}>
+                <PersistGate
+                    loading={
+                        <View style={{flex: 1, background: 'red'}}/>
+                    }
+                    // onBeforeLift={onBeforeLift}
+                    persistor={persistor}>
+                    <CRUD/>
+                </PersistGate>
+            </Provider>
+
+
+        )
     }
 }
-
-const styles = StyleSheet.create({
-    gridView: {
-        paddingTop: 25,
-        flex: 1,
-    },
-    itemContainer: {
-        justifyContent: 'flex-end',
-        borderRadius: 5,
-        padding: 10,
-        height: 150,
-    },
-    itemName: {
-        fontSize: 16,
-        color: '#fff',
-        fontWeight: '600',
-    },
-    itemCode: {
-        fontWeight: '600',
-        fontSize: 12,
-        color: '#fff',
-    },
-});
