@@ -1,19 +1,21 @@
-import {DELETE_POINT, SAVE_SEARCH_RESULT, CLEAR_JOB_REQUEST, SAVE_PAY_ITEM} from './map.action'
+import {DELETE_POINT, ADD_POINT} from './map.action'
 import {removeKey} from "../../helper/utilities";
+
+const uuidv1 = require('uuid/v1');
 
 const initialState = {
     coordinates: [{
         title: 'checkpoint charlie',
         point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
-        uuid: 'uuid1000'
+        uuid: uuidv1()
     }, {
         title: 'checkpoint charlie',
         point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
-        uuid: 'uuid1001'
+        uuid: uuidv1()
     }, {
         title: 'checkpoint charlie',
         point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
-        uuid: 'uuid1002'
+        uuid: uuidv1()
     }],
 };
 
@@ -21,22 +23,15 @@ export default function userReducer(state = initialState, action = {}) {
     const payload = action.payload;
     switch (action.type) {
         case DELETE_POINT:
-            let coordinates = removeKey(state.coordinates, action.payload.uuid);
+            let coordinates = removeKey(state.coordinates, payload.uuid);
             return {
                 ...state, coordinates
             };
-        case SAVE_SEARCH_RESULT:
-            return {
-                ...state, searchResult: payload.searchResult
-            };
-        case SAVE_PAY_ITEM:
-            return {
-                ...state, payItem: payload.payItem
-            };
-        case CLEAR_JOB_REQUEST:
+        case ADD_POINT:
+            payload.point.uuid = uuidv1();
+            state.coordinates.push(payload.point);
             return {
                 ...state,
-                jobRequest: {}
             };
         default:
             return state;

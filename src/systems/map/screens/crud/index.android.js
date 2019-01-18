@@ -8,6 +8,7 @@ import MapBoxGL from '@mapbox/react-native-mapbox-gl';
 import PropTypes from 'prop-types';
 import GridItem from "../../../../components/grid-item/grid-item";
 import GridView from 'react-native-super-grid';
+import AddModalBox from "../../../../components/add-modal/add-modal";
 
 
 class CRUDScreen extends PureComponent {
@@ -110,6 +111,13 @@ class CRUDScreen extends PureComponent {
                         )}
                     />
                 </View>
+                <AddModalBox
+                    items={this.props.items}
+                    onItemSelect={this.props.onItemSelect}
+                    onTextChange={this.props.onTextChange}
+                    modalVisibility={this.props.modalVisibility}
+                    toggleModal={this.props.toggleModal}
+                />
             </View>
         )
     }
@@ -121,5 +129,7 @@ CRUDScreen.propTypes = {
     deleteCallBack: PropTypes.func,
     editCallBack: PropTypes.func,
     addMapCallBack: PropTypes.func,
+    modalVisibility: PropTypes.bool,
+    toggleModal: PropTypes.func
 };
 export default CRUDScreen;
