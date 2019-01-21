@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {View, Text} from "react-native";
-import {Button} from "../../../../components/button/button";
 import I18n from "../../../../assets/languages/i18n";
 import {LanguageKeys} from '../../../../assets/languages/locales/languageKeys';
 import {MAP_API_KEY} from 'react-native-dotenv';
@@ -9,6 +8,8 @@ import PropTypes from 'prop-types';
 import GridItem from "../../../../components/grid-item/grid-item";
 import GridView from 'react-native-super-grid';
 import AddModalBox from "../../../../components/add-modal/add-modal";
+import {Button} from "../../../../components/button/button";
+import * as TestIDs from "../../../../../playground/testIDs";
 
 
 class CRUDScreen extends PureComponent {
@@ -83,6 +84,7 @@ class CRUDScreen extends PureComponent {
                 </View>
                 <View>
                     <Button
+                        testID={TestIDs.ADD_NEW_AREA}
                         callBack={() => {
                             addMapCallBack()
                         }}
@@ -92,13 +94,14 @@ class CRUDScreen extends PureComponent {
                 </View>
                 <View style={{flex: 1}}>
                     <GridView
+                        testID={TestIDs.GRID_VIEW}
                         itemDimension={130}
                         items={gridItems}
                         style={{
                             paddingTop: 25,
                             flex: 1
                         }}
-                        renderItem={item => (
+                        renderItem={(item, index) => (
                             <GridItem title={item.title} latitude={item.point.latitude} longitude={item.point.longitude}
                                       deleteCallBack={() => {
                                           deleteCallBack(item.uuid)
@@ -107,6 +110,8 @@ class CRUDScreen extends PureComponent {
                                           editCallBack(item.uuid)
                                       }}
                                       uuid={item.uuid}
+                                      index={index}
+
                             />
                         )}
                     />

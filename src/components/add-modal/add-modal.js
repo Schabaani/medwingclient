@@ -3,6 +3,7 @@ import {View, TextInput} from "react-native";
 import PropTypes from 'prop-types';
 import Modal from "react-native-modal";
 import Suggestions from "../suggestion/suggestion";
+import * as TestIDs from "../../../playground/testIDs";
 
 
 class AddModalBox extends PureComponent {
@@ -17,6 +18,7 @@ class AddModalBox extends PureComponent {
             >
                 <View style={{flex: 0.75, backgroundColor: 'white'}}>
                     <TextInput
+                        testID={TestIDs.SEARCH_BOX}
                         style={{padding: 10, color: 'bluer'}}
                         onChangeText={text => this.props.onTextChange(text)}
                     />

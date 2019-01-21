@@ -10,7 +10,7 @@ class GridItem extends PureComponent {
 
 
     render() {
-        const {title, latitude, longitude, uuid, deleteCallBack, editCallBack} = this.props;
+        const {title, latitude, longitude, uuid, deleteCallBack, editCallBack, index} = this.props;
 
         return (
             <View>
@@ -25,7 +25,7 @@ class GridItem extends PureComponent {
                 }}>
                     <Button text={I18n.t(LanguageKeys.Edit)} callBack={editCallBack} uuid={uuid}/>
                     <Text> {I18n.t(LanguageKeys.Or)} </Text>
-                    <Button text={I18n.t(LanguageKeys.Delete)} callBack={deleteCallBack} uuid={uuid}/>
+                    <Button text={I18n.t(LanguageKeys.Delete)} callBack={deleteCallBack} testID={`delete_${index}`} uuid={uuid}/>
 
                 </View>
             </View>
