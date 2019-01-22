@@ -19,7 +19,7 @@ class AddModalBox extends PureComponent {
                 <View style={{flex: 0.75, backgroundColor: 'white'}}>
                     <TextInput
                         testID={TestIDs.SEARCH_BOX}
-                        style={{padding: 10, color: 'bluer'}}
+                        style={{padding: 10, color: 'blue'}}
                         onChangeText={text => this.props.onTextChange(text)}
                     />
                     <Suggestions
