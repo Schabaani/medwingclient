@@ -1,11 +1,12 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import {MAP_API_KEY} from 'react-native-dotenv';
 import MapBoxGL from '@mapbox/react-native-mapbox-gl';
-import {View} from "react-native";
+import {Image} from "react-native";
 import PropTypes from "prop-types";
+import * as Images from '../../assets/img'
 
 
-class MapView extends Component<{}> {
+class MapView extends PureComponent {
     constructor(props) {
         super(props);
         MapBoxGL.setAccessToken(MAP_API_KEY);
@@ -22,27 +23,21 @@ class MapView extends Component<{}> {
                 title='Test'
                 coordinate={[annotation.point.latitude, annotation.point.longitude]}>
 
-                <View
-
+                <Image
+                    source={Images.marker}
                     style={{
-                        flex: 1,
                         resizeMode: 'contain',
-                        width: 25,
-                        height: 25,
-                        backgroundColor: 'yellow'
+                        width: 32,
+                        height: 32,
                     }}/>
             </MapBoxGL.PointAnnotation>
         );
     }
 
     _renderAnnotations(annotations) {
-        const items = [];
-
-        for (let i = 0; i < annotations.length; i++) {
-            items.push(MapView._renderAnnotation(annotations[i], i));
-        }
-
-        return items;
+        return annotations.map((annotation, index)=>{
+            return MapView._renderAnnotation(annotation, index)
+        });
     }
 
     render() {
