@@ -52,7 +52,7 @@ class CRUDScreen extends PureComponent {
                                           deleteCallBack(item.uuid)
                                       }}
                                       editCallBack={() => {
-                                          editCallBack(item.uuid)
+                                          editCallBack(index)
                                       }}
                                       uuid={item.uuid}
                                       index={index}
@@ -67,6 +67,7 @@ class CRUDScreen extends PureComponent {
                     onTextChange={this.props.onTextChange}
                     modalVisibility={this.props.modalVisibility}
                     toggleModal={this.props.toggleModal}
+                    searchText={this.props.searchText}
                 />
             </View>
         )
@@ -80,6 +81,7 @@ CRUDScreen.propTypes = {
     editCallBack: PropTypes.func,
     addMapCallBack: PropTypes.func,
     modalVisibility: PropTypes.bool,
-    toggleModal: PropTypes.func
+    toggleModal: PropTypes.func,
+    searchText: PropTypes.string,
 };
 export default CRUDScreen;

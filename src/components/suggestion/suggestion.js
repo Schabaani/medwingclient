@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from "react-native";
 import * as TestIDs from "../../../playground/testIDs";
 
+//TODO change to list view
 const Suggestions = (props) => {
     const options = props.results.map((opt, index) => (
         <Text key={opt.id}

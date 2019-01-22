@@ -14,12 +14,14 @@ class CRUD extends Component<{}> {
         super(props);
         this.state = {
             modalVisibility: false,
-            items: []
+            items: [],
+            editingMode: false,
+            searchText: undefined
         };
     }
 
     addMapCallBack = () => {
-        this.setState({modalVisibility: !this.state.modalVisibility})
+        this.setState({modalVisibility: !this.state.modalVisibility, editingMode: false})
     };
 
     _toggleModal = () =>
@@ -29,19 +31,29 @@ class CRUD extends Component<{}> {
         let points = addressToPoint(text, {country: 'de'});
         let mapped = await extractPoints(points);
         this.setState({
-            items: mapped
+            items: mapped,
+            searchText: text
         });
     };
     _onItemSelect = (index) => {
-        let item = this.state.items[index];
-        this.props.addPoint({
-            title: item.name,
-            point: {latitude: item.geometry[0], longitude: item.geometry[1]},
-        });
-        this.setState({items: [], modalVisibility: false});
+        if (this.state.editingMode) {
+
+        } else {
+            let item = this.state.items[index];
+            this.props.addPoint({
+                title: item.name,
+                point: {latitude: item.geometry[0], longitude: item.geometry[1]},
+            });
+            this.setState({items: [], modalVisibility: false});
+        }
     };
     editCallBack = (identifier) => {
-
+        this.setState({
+            modalVisibility: !this.state.modalVisibility,
+            editingMode: true,
+            editedIndex: identifier,
+            searchText: this.props.coordinates[identifier].title
+        });
     };
 
     deleteCallBack = (identifier) => {
@@ -61,6 +73,7 @@ class CRUD extends Component<{}> {
                 toggleModal={this._toggleModal}
                 onItemSelect={this._onItemSelect}
                 onTextChange={this._onTextChange}
+                searchText={this.state.searchText}
                 items={this.state.items}
             />
         )
