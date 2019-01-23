@@ -17,22 +17,25 @@ class AddModalBox extends PureComponent {
                    }}
                 // style={{}}
             >
-                <View style={{flex: 1, backgroundColor: 'green', alignItems: 'center'}}>
-                    <View style={{justifyContent: 'center'}}>
+                <View style={{flex: 1, backgroundColor: 'white', alignItems: 'center'}}>
+                    <View style={{justifyContent: 'center', width: '90%'}}>
                         <View style={{
+
+                            marginTop: 5,
+                            paddingRight: 3,
+                            paddingLeft: 3,
                             flexDirection: 'row',
-                            border: 10,
+                            borderWidth: 1,
+                            borderRadius: 30,
                             borderColor: 'red',
                             justifyContent: 'center',
-                            width: '90%',
                             alignItems: 'center',
-                            // backgroundColor:'blue'
                         }}>
                             <TextInput
                                 value={this.props.searchText}
                                 placeholder={'I am going to'}
                                 testID={TestIDs.SEARCH_BOX}
-                                style={{padding: 10, color: 'blue', flex: 1}}
+                                style={{color: 'blue', flex: 1}}
                                 onChangeText={text => this.props.onTextChange(text)}
                             />
                             <Image
