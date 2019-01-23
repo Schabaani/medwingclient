@@ -1,5 +1,5 @@
-import {DELETE_POINT, ADD_POINT} from './map.action'
-import {removeKey} from "../../helper/utilities";
+import {DELETE_POINT, ADD_POINT, EDIT_POINT} from './map.action'
+import {removeKey, editPoint} from "../../helper/utilities";
 
 const uuidv1 = require('uuid/v1');
 
@@ -32,6 +32,11 @@ export default function userReducer(state = initialState, action = {}) {
             state.coordinates.push(payload.point);
             return {
                 ...state,
+            };
+        case EDIT_POINT:
+            coordinates = editPoint(state.coordinates, payload.editingItem, payload.selectingPoint);
+            return {
+                ...state, coordinates
             };
         default:
             return state;

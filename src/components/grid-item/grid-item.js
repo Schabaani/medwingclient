@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text} from "react-native";
 import PropTypes from 'prop-types';
 import I18n from "../../assets/languages/i18n";
 import {LanguageKeys} from '../../assets/languages/locales/languageKeys'
@@ -23,7 +23,7 @@ class GridItem extends PureComponent {
                     justifyContent: 'flex-start',
                     alignItems: 'center'
                 }}>
-                    <Button text={I18n.t(LanguageKeys.Edit)} callBack={editCallBack} uuid={uuid}/>
+                    <Button text={I18n.t(LanguageKeys.Edit)} callBack={editCallBack} testID={`edit_${index}`} uuid={uuid}/>
                     <Text> {I18n.t(LanguageKeys.Or)} </Text>
                     <Button text={I18n.t(LanguageKeys.Delete)} callBack={deleteCallBack} testID={`delete_${index}`} uuid={uuid}/>
 

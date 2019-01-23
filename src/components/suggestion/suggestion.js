@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, FlatList} from "react-native";
 import * as TestIDs from "../../../playground/testIDs";
 
-//TODO change to list view
 const Suggestions = (props) => {
     const separator = () => {
         return (
@@ -23,6 +22,7 @@ const Suggestions = (props) => {
                   style={{paddingTop: 10, paddingBottom: 1}}
                   testID={`${TestIDs.SUGGESTION_ITEM}_${index}`}
                   onPress={() => {
+                      props.searchBarRef.current.clear();
                       props.onItemSelect(index);
                   }}
             >

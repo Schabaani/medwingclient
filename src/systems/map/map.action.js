@@ -19,3 +19,15 @@ export function addPointDispatcher(point) {
         }
     }
 }
+
+export const EDIT_POINT = 'EDIT_POINT';
+
+export function editPointDispatcher(editingItem, selectingPoint) {
+    return {
+        type: EDIT_POINT,
+        payload: {
+            editingItem,
+            selectingPoint,
+        }
+    }
+}

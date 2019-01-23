@@ -9,13 +9,17 @@ export const addressToPoint = async (query, filters = {}) => {
 export const extractPoints = async points => {
     let rss = await points;
     let rs = rss.features;
-    return rs.map((result) => {
-        return {
-            name: result.place_name,
-            id: result.id,
-            geometry: result.center
-        }
-    });
+    try {
+        return rs.map((result) => {
+            return {
+                name: result.place_name,
+                id: result.id,
+                geometry: result.center
+            }
+        });
+    } catch (e) {
+        return [];
+    }
 };
 
 const queryBuilder = (query, filters) => {

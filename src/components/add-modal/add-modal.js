@@ -7,7 +7,10 @@ import * as TestIDs from "../../../playground/testIDs";
 import * as Images from "../../assets/img"
 
 class AddModalBox extends PureComponent {
-
+    constructor(props) {
+        super(props);
+        this.searchBar = React.createRef();
+    }
 
     render() {
         return (
@@ -15,12 +18,10 @@ class AddModalBox extends PureComponent {
                    onBackdropPress={() => {
                        this.props.toggleModal()
                    }}
-                // style={{}}
             >
                 <View style={{flex: 1, backgroundColor: 'white', alignItems: 'center'}}>
                     <View style={{justifyContent: 'center', width: '90%'}}>
                         <View style={{
-
                             marginTop: 5,
                             paddingRight: 3,
                             paddingLeft: 3,
@@ -32,11 +33,13 @@ class AddModalBox extends PureComponent {
                             alignItems: 'center',
                         }}>
                             <TextInput
-                                value={this.props.searchText}
-                                placeholder={'I am going to'}
+                                // value={this.props.searchText}
+                                defaultValue={this.props.searchText}
+                                placeholder={'Search'}
                                 testID={TestIDs.SEARCH_BOX}
                                 style={{color: 'blue', flex: 1}}
                                 onChangeText={text => this.props.onTextChange(text)}
+                                ref={this.searchBar}
                             />
                             <Image
                                 source={Images.search}
@@ -46,6 +49,7 @@ class AddModalBox extends PureComponent {
                         <Suggestions
                             results={this.props.items}
                             onItemSelect={this.props.onItemSelect}
+                            searchBarRef={this.searchBar}
                         />
                     </View>
                 </View>
