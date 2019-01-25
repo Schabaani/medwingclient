@@ -1,25 +1,15 @@
 import React from 'react';
-import {View, Text, FlatList} from "react-native";
+import {View, Text, FlatList, StyleSheet} from "react-native";
 import * as TestIDs from "../../../playground/testIDs";
+import ColorPalette from "../../assets/color-palette";
 
 const Suggestions = (props) => {
-    const separator = () => {
-        return (
-            <View
-                style={{
-                    height: 1,
-                    width: "99%",
-                    backgroundColor: "#b5ca67",
-                    marginLeft: "1%"
-                }}
-            />
-        )
-    };
+    const separator = () => (<View style={styles.separator}/>);
 
     const renderItem = (item, index) => {
         return (
             <Text key={item.id}
-                  style={{paddingTop: 10, paddingBottom: 1}}
+                  style={styles.itemWrapper}
                   testID={`${TestIDs.SUGGESTION_ITEM}_${index}`}
                   onPress={() => {
                       props.searchBarRef.current.clear();
@@ -37,5 +27,18 @@ const Suggestions = (props) => {
         renderItem={({item, index}) => (renderItem(item, index))}
     />
 };
+
+const styles = StyleSheet.create({
+    separator: {
+        height: 1,
+        width: "99%",
+        backgroundColor: ColorPalette.Separator,
+        marginLeft: "1%"
+    },
+    itemWrapper: {
+        paddingTop: 10,
+        paddingBottom: 1
+    }
+});
 
 export default Suggestions

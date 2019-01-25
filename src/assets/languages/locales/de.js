@@ -7,5 +7,6 @@ export default {
     Longitude: 'Längengrad',
     NoInternet: 'Kein Internet',
     PleaseConnectToInternet: 'Bitte verbinden Sie sich mit dem Internet',
-    Search: 'Suche'
+    Search: 'Suche',
+    Deleted: 'Gelöscht'
 };

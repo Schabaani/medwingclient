@@ -5,6 +5,8 @@ import {addPointDispatcher, deletePointDispatcher, editPointDispatcher} from "..
 import ShowToastHOC from '../../../../components/hoc/toast';
 import {addressToPoint, extractPoints} from "../../../../utilities/geocoder";
 import NoInternetHOC from "../../../../components/hoc/no-internet";
+import I18n from "../../../../assets/languages/i18n";
+import {LanguageKeys} from "../../../../assets/languages/locales/languageKeys";
 
 const CRUDScreenAddedNoInternet = NoInternetHOC(CRUDScreen);
 
@@ -33,7 +35,7 @@ class CRUD extends Component<{}> {
 
     _toggleModal = () => {
         if (this.state.modalVisibility) {
-            this.setState({modalVisibility: false, items: []});
+            this.setState({modalVisibility: false, items: [], searchText: undefined});
         } else {
             this.setState({modalVisibility: true});
         }
@@ -73,7 +75,7 @@ class CRUD extends Component<{}> {
         let item = this.state.items[index];
         this.props.addPoint({
             title: item.name,
-            point: {latitude: item.geometry[0], longitude: item.geometry[1]},
+            point: {longitude: item.geometry[0], latitude: item.geometry[1]},
         });
         this.setState({items: [], modalVisibility: false, searchText: undefined});
     };
@@ -94,7 +96,7 @@ class CRUD extends Component<{}> {
 
     deleteCallBack = (identifier) => {
         this.props.deletePoint(identifier);
-        this.props.showToast('deleted');
+        this.props.showToast(I18n.t(LanguageKeys.Deleted));
     };
 
 

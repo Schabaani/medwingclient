@@ -7,5 +7,6 @@ export const LanguageKeys = {
     Longitude: 'Longitude',
     NoInternet: 'NoInternet',
     PleaseConnectToInternet: 'PleaseConnectToInternet',
-    Search: 'Search'
+    Search: 'Search',
+    Deleted: 'Deleted'
 };

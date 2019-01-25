@@ -7,5 +7,6 @@ export default {
     Longitude: 'Longitude',
     NoInternet: 'No Internet',
     PleaseConnectToInternet: 'Please Connect To The Internet',
-    Search: 'Search'
+    Search: 'Search',
+    Deleted: 'Deleted'
 };

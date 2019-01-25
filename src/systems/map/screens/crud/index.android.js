@@ -8,15 +8,14 @@ import GridView from 'react-native-super-grid';
 import AddModalBox from "../../../../components/add-modal/add-modal";
 import {Button} from "../../../../components/button/button";
 import * as TestIDs from "../../../../../playground/testIDs";
-import MapView from "../../../../components/map/map-view"
+import MapView from "../../../../components/map/map-view";
+import styles from "./styles"
 
 
 class CRUDScreen extends PureComponent {
     constructor(props) {
         super(props);
     }
-
-
     render() {
         const {gridItems, deleteCallBack, editCallBack, addMapCallBack} = this.props;
 
@@ -34,7 +33,7 @@ class CRUDScreen extends PureComponent {
                             addMapCallBack()
                         }}
                         text={I18n.t(LanguageKeys.AddMap)}
-                        style={{backgroundColor: 'red', width: 80, borderRadius: 5}}
+                        style={styles.addButton}
                     />
                 </View>
                 <View style={{flex: 1}}>
@@ -42,10 +41,7 @@ class CRUDScreen extends PureComponent {
                         testID={TestIDs.GRID_VIEW}
                         itemDimension={130}
                         items={gridItems}
-                        style={{
-                            paddingTop: 25,
-                            flex: 1
-                        }}
+                        style={styles.gridView}
                         renderItem={(item, index) => (
                             <GridItem title={item.title} latitude={item.point.latitude} longitude={item.point.longitude}
                                       deleteCallBack={() => {

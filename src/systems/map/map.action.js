@@ -1,4 +1,4 @@
-export const DELETE_POINT = 'DELETE_POINT';
+import {ADD_POINT, DELETE_POINT, EDIT_POINT} from "./map.type";
 
 export function deletePointDispatcher(uuid) {
     return {
@@ -9,8 +9,6 @@ export function deletePointDispatcher(uuid) {
     }
 }
 
-export const ADD_POINT = 'ADD_POINT';
-
 export function addPointDispatcher(point) {
     return {
         type: ADD_POINT,
@@ -19,8 +17,6 @@ export function addPointDispatcher(point) {
         }
     }
 }
-
-export const EDIT_POINT = 'EDIT_POINT';
 
 export function editPointDispatcher(editingItem, selectingPoint) {
     return {

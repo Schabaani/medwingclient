@@ -1,10 +1,9 @@
 import React, {Component} from "react";
 import {MAP_API_KEY} from 'react-native-dotenv';
 import MapBoxGL from '@mapbox/react-native-mapbox-gl';
-import {Image} from "react-native";
+import {Image, StyleSheet} from "react-native";
 import PropTypes from "prop-types";
-import * as Images from '../../assets/img'
-
+import * as Images from '../../assets/img';
 
 class MapView extends Component {
     constructor(props) {
@@ -19,14 +18,10 @@ class MapView extends Component {
             <MapBoxGL.PointAnnotation
                 key={id}
                 id={id}
-                coordinate={[annotation.point.latitude, annotation.point.longitude]}>
+                coordinate={[annotation.point.longitude, annotation.point.latitude]}>
                 <Image
                     source={Images.marker}
-                    style={{
-                        resizeMode: 'contain',
-                        width: 32,
-                        height: 32,
-                    }}/>
+                    style={styles.marker}/>
             </MapBoxGL.PointAnnotation>
         );
     }
@@ -43,8 +38,8 @@ class MapView extends Component {
                 style={{flex: 1}}
                 logoEnabled={false}
                 showUserLocation={true}
-                centerCoordinate={[13, 52]}
-                zoomLevel={16}
+                centerCoordinate={[13.3903913, 52.5074434]}
+                zoomLevel={7}
                 scrollEnabled={true}
                 zoomEnabled={true}
                 pitchEnabled={true}
@@ -58,4 +53,16 @@ class MapView extends Component {
 MapView.propTypes = {
     annotations: PropTypes.array,
 };
+
+const styles = StyleSheet.create({
+    marker: {
+        resizeMode: 'contain',
+        width: 32,
+        height: 32,
+    },
+    itemWrapper: {
+        paddingTop: 10,
+        paddingBottom: 1
+    }
+});
 export default MapView;

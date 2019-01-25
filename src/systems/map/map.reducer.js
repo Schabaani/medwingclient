@@ -1,4 +1,4 @@
-import {DELETE_POINT, ADD_POINT, EDIT_POINT} from './map.action'
+import {DELETE_POINT, ADD_POINT, EDIT_POINT} from './map.type'
 import {removeKey, editPoint} from "../../helper/utilities";
 
 const uuidv1 = require('uuid/v1');
@@ -6,15 +6,7 @@ const uuidv1 = require('uuid/v1');
 const initialState = {
     coordinates: [{
         title: 'checkpoint charlie',
-        point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
-        uuid: uuidv1()
-    }, {
-        title: 'checkpoint charlie',
-        point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
-        uuid: uuidv1()
-    }, {
-        title: 'checkpoint charlie',
-        point: {latitude: -74.00751113891602, longitude: 40.746346606483826},
+        point: {latitude: 52.5074434, longitude: 13.3903913},
         uuid: uuidv1()
     }],
 };

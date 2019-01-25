@@ -50,7 +50,7 @@ export function editPoint(coordinates, edit, replace) {
     for (let i = 0; i < coordinates.length; i++) {
         if (coordinates[i].uuid === edit.uuid) {
             coordinates[i].title = replace.name;
-            coordinates[i].point = {latitude: replace.geometry[0], longitude: replace.geometry[1]};
+            coordinates[i].point = {longitude: replace.geometry[0], latitude: replace.geometry[1]};
             break;
         }
     }
