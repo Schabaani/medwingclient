@@ -14,13 +14,11 @@ class MapView extends Component {
 
     static _renderAnnotation(annotation, counter) {
         const id = `pointAnnotation${counter}`;
-        const title = `Longitude: ${this.state.coordinates[counter][0]} Latitude: ${this.state.coordinates[counter][1]}`;
 
         return (
             <MapBoxGL.PointAnnotation
                 key={id}
                 id={id}
-                // title={title}
                 coordinate={[annotation.point.latitude, annotation.point.longitude]}>
                 <Image
                     source={Images.marker}
@@ -60,6 +58,4 @@ class MapView extends Component {
 MapView.propTypes = {
     annotations: PropTypes.array,
 };
-
-
 export default MapView;

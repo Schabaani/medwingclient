@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import {addPointDispatcher, deletePointDispatcher, editPointDispatcher} from "../../map.action";
 import ShowToastHOC from '../../../../components/hoc/toast';
 import {addressToPoint, extractPoints} from "../../../../utilities/geocoder";
+import NoInternetHOC from "../../../../components/hoc/no-internet";
+
+const CRUDScreenAddedNoInternet = NoInternetHOC(CRUDScreen);
+
 
 class CRUD extends Component<{}> {
     static navigationOptions = {
@@ -96,7 +100,7 @@ class CRUD extends Component<{}> {
 
     render() {
         return (
-            <CRUDScreen
+            <CRUDScreenAddedNoInternet
                 gridItems={this.props.coordinates}
                 editCallBack={this.editCallBack}
                 deleteCallBack={this.deleteCallBack}

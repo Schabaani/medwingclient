@@ -2,8 +2,13 @@ import {MAP_API_KEY, MAP_SERVER_URL} from 'react-native-dotenv'
 
 export const addressToPoint = async (query, filters = {}) => {
     let queryString = queryBuilder(query, filters);
-    let result = await fetch(queryString);
-    return JSON.parse(result._bodyText);
+    try {
+        let result = await fetch(queryString);
+        return JSON.parse(result._bodyText);
+    } catch (e) {
+        console.log('some error');
+        return {features: []}
+    }
 };
 
 export const extractPoints = async points => {

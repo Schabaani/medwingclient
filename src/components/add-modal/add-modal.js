@@ -5,6 +5,8 @@ import Modal from "react-native-modal";
 import Suggestions from "../suggestion/suggestion";
 import * as TestIDs from "../../../playground/testIDs";
 import * as Images from "../../assets/img"
+import I18n from "../../assets/languages/i18n";
+import {LanguageKeys} from "../../assets/languages/locales/languageKeys";
 
 class AddModalBox extends PureComponent {
     constructor(props) {
@@ -35,7 +37,7 @@ class AddModalBox extends PureComponent {
                             <TextInput
                                 // value={this.props.searchText}
                                 defaultValue={this.props.searchText}
-                                placeholder={'Search'}
+                                placeholder={I18n.t(LanguageKeys.Search)}
                                 testID={TestIDs.SEARCH_BOX}
                                 style={{color: 'blue', flex: 1}}
                                 onChangeText={text => this.props.onTextChange(text)}
